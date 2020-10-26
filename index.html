@@ -12,6 +12,29 @@
   <div id="calculator"></div>
   <script src="https://www.desmos.com/api/v1.5/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
   <script>
+    const setCalculatorStateFromLink = async (calc, url) => {
+
+     requestJSON(url)
+        .then((endpoint) => {
+          // console.log(endpoint);
+          calc.setState(endpoint.state);
+        });
+    }
+
+    const requestJSON = async url => {
+      const myHeaders = new Headers();
+      myHeaders.append('Accept', 'application/json');
+
+      return fetch(url, {
+        method: 'GET',
+        headers: myHeaders,
+      })
+      .then(response => response.json())
+      .catch((error) => {
+        console.error(error);
+      })
+    }
+
     var calculatorSettings = {
       settingsMenu: false,
       zoomButtons: false,

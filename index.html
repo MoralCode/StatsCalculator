@@ -1,85 +1,85 @@
 <html>
 
 <head>
-  <title></title>
-  <meta charset="utf-8">
-  <style>
-  </style>
+<title></title>
+<meta charset="utf-8">
+<style>
+</style>
 </head>
 
 <body>
-  <h1>Ultimate Stats Calculator Demo</h1>
-  <div id="calculator"></div>
-  <script src="https://www.desmos.com/api/v1.5/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
-  <script>
+<h1>Ultimate Stats Calculator Demo</h1>
+<div id="calculator"></div>
+<script src="https://www.desmos.com/api/v1.5/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
 
-    const calculators = {
-      "Weibull": "https://www.desmos.com/calculator/ux56x56sft"
-    }
+	const calculators = {
+	"Weibull": "https://www.desmos.com/calculator/ux56x56sft"
+	}
 
-    const setCalculatorStateFromLink = async (calc, url) => {
+	const setCalculatorStateFromLink = async (calc, url) => {
 
-     requestJSON(url)
-        .then((endpoint) => {
-          // console.log(endpoint);
-          calc.setState(endpoint.state);
-        });
-    }
+	requestJSON(url)
+		.then((endpoint) => {
+		// console.log(endpoint);
+		calc.setState(endpoint.state);
+		});
+	}
 
-    const requestJSON = async url => {
-      const myHeaders = new Headers();
-      myHeaders.append('Accept', 'application/json');
+	const requestJSON = async url => {
+	const myHeaders = new Headers();
+	myHeaders.append('Accept', 'application/json');
 
-      return fetch(url, {
-        method: 'GET',
-        headers: myHeaders,
-      })
-      .then(response => response.json())
-      .catch((error) => {
-        console.error(error);
-      })
-    }
+	return fetch(url, {
+		method: 'GET',
+		headers: myHeaders,
+	})
+	.then(response => response.json())
+	.catch((error) => {
+		console.error(error);
+	})
+	}
 
-    var calculatorSettings = {
-      settingsMenu: false,
-      zoomButtons: false,
-      keypad: false,
-      expressionsTopbar: false,
-      border: false
-    };
+	var calculatorSettings = {
+	settingsMenu: false,
+	zoomButtons: false,
+	keypad: false,
+	expressionsTopbar: false,
+	border: false
+	};
 
-    var calculator = Desmos.GraphingCalculator(
-      document.getElementById('calculator'),
-      calculatorSettings
-      );
+	var calculator = Desmos.GraphingCalculator(
+	document.getElementById('calculator'),
+	calculatorSettings
+	);
 
-    setCalculatorStateFromLink(calculator, calculators["Weibull"]);
+	setCalculatorStateFromLink(calculator, calculators["Weibull"]);
 
-    function update() {
+	function update() {
 
-      // calculator.setMathBounds({
-      //   left: getRandMin()- padding,
-      //   right: getRandMax()+ padding,
-      //   bottom: -1,
-      //   top: 1
-      // });
+	// calculator.setMathBounds({
+	//   left: getRandMin()- padding,
+	//   right: getRandMax()+ padding,
+	//   bottom: -1,
+	//   top: 1
+	// });
 
-      // let pointObj = {
-      //   id: "range" + points.length,
-      //   latex: getRandMin() + " <= x  < " + getRandMax(),
-      //   color: Desmos.Colors.BLUE
-      // };
+	// let pointObj = {
+	//   id: "range" + points.length,
+	//   latex: getRandMin() + " <= x  < " + getRandMax(),
+	//   color: Desmos.Colors.BLUE
+	// };
 
-      // points.push(pointObj);
-      // Add an expression
-      // calculator.setExpression(pointObj);
+	// points.push(pointObj);
+	// Add an expression
+	// calculator.setExpression(pointObj);
 
 
 
-    }
-    update()
-    
-  </script>
+	}
+	update()
+	
+</script>
 </body>
 
 </html>
